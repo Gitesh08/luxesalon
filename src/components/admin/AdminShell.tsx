@@ -95,9 +95,8 @@ export function AdminShell() {
 
       {/* Sidebar */}
       <aside
-        className={`${
-          mobileMenuOpen ? "block" : "hidden"
-        } md:block w-full md:w-64 bg-[#121210] border-r border-[#2F2F2A] flex-shrink-0 flex flex-col justify-between p-6 z-20`}
+        className={`${mobileMenuOpen ? "block" : "hidden"
+          } md:block w-full md:w-64 bg-[#121210] border-r border-[#2F2F2A] flex-shrink-0 flex flex-col justify-between p-6 z-20`}
       >
         <div>
           {/* Logo */}
@@ -121,11 +120,10 @@ export function AdminShell() {
                     setActiveTab(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs tracking-wider uppercase font-medium transition-colors cursor-pointer ${
-                    isActive
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs tracking-wider uppercase font-medium transition-colors cursor-pointer ${isActive
                       ? "bg-[var(--color-gold)] text-black font-semibold"
                       : "text-[#8A8A7A] hover:text-[#F0EBE1] hover:bg-[#1E1E1C]"
-                  }`}
+                    }`}
                   style={{ borderRadius: 0 }}
                 >
                   <span className="flex items-center gap-2.5">
@@ -134,11 +132,10 @@ export function AdminShell() {
                   </span>
                   {item.badge && (
                     <span
-                      className={`text-[10px] font-mono px-1.5 py-0.5 ${
-                        isActive
+                      className={`text-[10px] font-mono px-1.5 py-0.5 ${isActive
                           ? "bg-black text-[var(--color-gold)]"
                           : "bg-[var(--color-gold)]/20 text-[var(--color-gold)]"
-                      }`}
+                        }`}
                     >
                       {item.badge}
                     </span>
