@@ -7,9 +7,18 @@ import { formatDate } from "@/lib/time";
 
 export function TodayBookingsCard() {
   const { bookings } = useBookings();
-  const todayStr = formatDate(new Date());
+  const today = new Date();
+  const todayStr = formatDate(today);
+  const dayNum = today.toLocaleDateString("en-IN", { day: "2-digit" });
+  const month = today.toLocaleDateString("en-IN", { month: "short" });
+  const customToday = `${dayNum} ${month} ${today.getFullYear()}`;
 
-  const todayBookings = bookings.filter((b) => b.date.includes("24 Oct") || b.date.includes(todayStr));
+  const todayBookings = bookings.filter(
+    (b) =>
+      b.date === customToday ||
+      b.date.includes(todayStr) ||
+      b.date.includes("24 Oct")
+  );
   const completedCount = todayBookings.filter((b) => b.status === "completed").length;
 
   return (

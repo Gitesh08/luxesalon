@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, X, Gift } from "lucide-react";
+import { X, Gift } from "lucide-react";
 import { useOffers } from "@/hooks/useOffers";
 import { Button } from "@/components/ui/Button";
 import { STORAGE_KEYS } from "@/constants/demo";

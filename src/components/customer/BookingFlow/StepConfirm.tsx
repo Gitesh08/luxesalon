@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Sparkles, Calendar, Clock, CheckCircle, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { TokenBadge } from "@/components/ui/TokenBadge";
 import { Button } from "@/components/ui/Button";
 import { Booking } from "@/types/booking";

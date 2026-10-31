@@ -71,6 +71,7 @@ interface LuxeSalonState {
   // Hydration & sync
   isHydrated: boolean;
   hydrateFromStorage: () => void;
+  resetDemoData: () => void;
 }
 
 // Helpers for safe storage operations with Zod
@@ -111,7 +112,7 @@ function readSessionStorage<T>(
     if (!raw) return fallback;
     const parsed = schema.safeParse(JSON.parse(raw));
     return parsed.success ? parsed.data : fallback;
-  } catch (err) {
+  } catch {
     return fallback;
   }
 }
@@ -189,6 +190,34 @@ export const useStore = create<LuxeSalonState>((set, get) => ({
       isAdminAuthenticated: adminSession.authenticated,
       trackedTokenId: trackedToken || (effectiveQueue.tokens[4]?.id ?? null), // Default track Kavita's waiting token for demo
       isHydrated: true,
+    });
+  },
+
+  resetDemoData: () => {
+    if (typeof window === "undefined") return;
+    const today = getTodayDateString();
+    const freshQueue: QueueState = {
+      ...SEED_QUEUE,
+      date: today,
+    };
+    writeToStorage(STORAGE_KEYS.queue, freshQueue);
+    writeToStorage(STORAGE_KEYS.bookings, SEED_BOOKINGS);
+    writeToStorage(STORAGE_KEYS.menu, SEED_MENU);
+    writeToStorage(STORAGE_KEYS.offers, SEED_OFFERS);
+    localStorage.removeItem("luxesalon:offer_seen");
+    localStorage.removeItem("luxesalon:tracked_token");
+
+    broadcast.post({ type: "QUEUE_UPDATE", payload: freshQueue });
+    broadcast.post({ type: "BOOKINGS_UPDATE", payload: SEED_BOOKINGS });
+    broadcast.post({ type: "MENU_UPDATE", payload: SEED_MENU });
+    broadcast.post({ type: "OFFERS_UPDATE", payload: SEED_OFFERS });
+
+    set({
+      queue: freshQueue,
+      bookings: SEED_BOOKINGS,
+      menuItems: SEED_MENU,
+      offers: SEED_OFFERS,
+      trackedTokenId: freshQueue.tokens[4]?.id ?? null,
     });
   },
 

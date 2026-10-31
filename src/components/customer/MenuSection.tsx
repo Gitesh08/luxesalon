@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Clock, Sparkles, ArrowRight } from "lucide-react";
+import { Clock, Sparkles } from "lucide-react";
 import { useMenu } from "@/hooks/useMenu";
 import { SERVICE_CATEGORIES } from "@/constants/services";
 import { Button } from "@/components/ui/Button";

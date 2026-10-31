@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ShieldCheck, Phone, User, CheckCircle2 } from "lucide-react";
+import { User, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export interface StepDetailsProps {

@@ -8,14 +8,12 @@ import {
   Clock,
   UserX,
   UserPlus,
-  RefreshCw,
 } from "lucide-react";
 import { useQueue } from "@/hooks/useQueue";
 import { TokenBadge } from "@/components/ui/TokenBadge";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
-import { Token, ServiceCategory } from "@/types/queue";
-import { SERVICE_CATEGORIES } from "@/constants/services";
+import { ServiceCategory } from "@/types/queue";
 
 export function QueueManager() {
   const {

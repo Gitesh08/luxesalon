@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CalendarDays, Sparkles } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 
 export function CalendarCard() {
   const today = new Date();

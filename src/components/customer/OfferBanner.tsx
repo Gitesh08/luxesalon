@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Sparkles, Tag } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { useOffers } from "@/hooks/useOffers";
 
 export function OfferBanner() {

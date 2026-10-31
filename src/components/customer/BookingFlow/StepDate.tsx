@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Calendar as CalendarIcon, Check } from "lucide-react";
 
 export interface StepDateProps {
   selectedDate: string;

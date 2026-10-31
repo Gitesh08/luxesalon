@@ -10,7 +10,7 @@ import { AdminShell } from "@/components/admin/AdminShell";
 import { ViewToggle } from "@/components/toggle/ViewToggle";
 
 export default function Home() {
-  const isHydrated = useStorageHydration();
+  useStorageHydration();
   useBroadcast();
   const currentView = useStore((state) => state.currentView);
   const shouldReduce = useReducedMotion();

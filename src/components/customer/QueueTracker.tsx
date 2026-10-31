@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Clock, UserCheck, ArrowRight, ShieldCheck } from "lucide-react";
+import { Clock } from "lucide-react";
 import { useQueue } from "@/hooks/useQueue";
 import { TokenBadge } from "@/components/ui/TokenBadge";
 import { Button } from "@/components/ui/Button";

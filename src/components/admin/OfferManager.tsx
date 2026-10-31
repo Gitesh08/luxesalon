@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, ToggleLeft, ToggleRight, Edit3, Check, X } from "lucide-react";
+import { ToggleLeft, ToggleRight, Edit3, Check } from "lucide-react";
 import { useOffers } from "@/hooks/useOffers";
 import { Offer, OfferDisplayType } from "@/types/offer";
 import { Button } from "@/components/ui/Button";

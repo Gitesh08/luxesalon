@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Download, Search, Filter } from "lucide-react";
+import { Download, Search } from "lucide-react";
 import { useBookings } from "@/hooks/useBookings";
 import { TokenBadge } from "@/components/ui/TokenBadge";
 import { Button } from "@/components/ui/Button";

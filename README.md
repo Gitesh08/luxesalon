@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LuxeSalon — Salon Management & Customer Sanctuary Platform
 
-## Getting Started
+> **Live Demo & Presentation Build**  
+> Luxury salon operating system pairing a customer booking sanctuary with an executive operations cockpit.
 
-First, run the development server:
+---
+
+## 💎 Key Features
+
+- **"The Appointment Card" Aesthetic:** Bespoke luxury styling inspired by French letterpress stationery. Warm cream backgrounds, charcoal contrast, brushed gold (`#B8963E`) accents, sharp zero-radius edges, zero generic card grids.
+- **Dual-View Architecture:** Customer View and Director Admin Suite running side-by-side.
+- **Zero-Backend Real-Time Synchronization:** Sub-200ms reactive cross-tab sync powered by `localStorage` + `BroadcastChannel('luxesalon')`.
+- **FCFS Queue Commander:** State-machine queue tracking with live wait estimation, Standby late-arrival handling, and walk-in generator.
+- **Frictionless Booking Wizard:** 5-step intuitive flow with horizontal date rail, availability matrix, and simulated OTP verification.
+- **Executive Bento Overview:** Live chamber occupancy, today's appointments, multi-period revenue analytics, and interactive calendar.
+- **Live Menu & Offer Switchboard:** Real-time CMS updates reflecting instantly on customer screens.
+- **100% Clean UI:** No watermarks or intrusive badges.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ or 20+
+- npm or pnpm
+
+### Installation & Run
 
 ```bash
+cd luxesalon
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 Demo Access Credentials
 
-## Learn More
+- **Customer View:** Unrestricted public client access
+- **Admin View Toggle:** Click the floating pill in the bottom-right corner
+  - **Director ID:** `admin`
+  - **Password:** `demo2024`
+- **Reset Demo Data:** Click the **"Reset Data"** button in the Admin top status bar or sidebar to restore the pristine 15-booking, 5-queue seed state at any time.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎬 Walkthrough Recording Guide
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For the full scene-by-scene presenter script, dual-window layout guidelines, and talk track, refer to:
+[DEMO_WALKTHROUGH_SCRIPT.md](file:///C:/Users/GITESH/.gemini/antigravity/brain/f9cdd75b-8fee-41ba-a990-7b9ab06a15e8/DEMO_WALKTHROUGH_SCRIPT.md)

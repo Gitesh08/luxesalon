@@ -1,20 +1,30 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 import { useBookings } from "@/hooks/useBookings";
 import { TokenBadge } from "@/components/ui/TokenBadge";
 
 export function CalendarView() {
   const { bookings } = useBookings();
-  const [selectedDay, setSelectedDay] = useState(24);
+  const today = new Date();
+  const [selectedDay, setSelectedDay] = useState(today.getDate());
+  const monthName = today.toLocaleDateString("en-IN", { month: "long" });
+  const monthShort = today.toLocaleDateString("en-IN", { month: "short" });
+  const year = today.getFullYear();
 
-  // Generate days in month for October 2026 (starts Thursday, 31 days)
-  const daysInMonth = Array.from({ length: 31 }, (_, i) => i + 1);
+  // Days in current month
+  const totalDays = new Date(year, today.getMonth() + 1, 0).getDate();
+  const daysInMonth = Array.from({ length: totalDays }, (_, i) => i + 1);
 
   // Filter bookings for selected day
+  const padDay = String(selectedDay).padStart(2, "0");
   const dayBookings = bookings.filter((b) => {
-    return b.date.includes(`${selectedDay} Oct`);
+    return (
+      b.date.includes(`${padDay} ${monthShort}`) ||
+      b.date.includes(`${selectedDay} ${monthShort}`) ||
+      b.date.includes(`${selectedDay} Oct`)
+    );
   });
 
   return (
@@ -24,7 +34,7 @@ export function CalendarView() {
           Atelier Master Calendar
         </h2>
         <p className="text-xs text-[#8A8A7A]">
-          October 2026 schedule overview and suite occupancy.
+          {monthName} {year} schedule overview and suite occupancy.
         </p>
       </div>
 
@@ -36,11 +46,11 @@ export function CalendarView() {
         >
           <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#2F2F2A]">
             <span className="font-serif text-xl font-medium text-[#F0EBE1]">
-              October 2026
+              {monthName} {year}
             </span>
             <div className="flex items-center gap-2">
               <span className="text-xs font-mono text-[var(--color-gold)]">
-                Selected: {selectedDay} Oct 2026
+                Selected: {selectedDay} {monthShort} {year}
               </span>
             </div>
           </div>
@@ -65,7 +75,10 @@ export function CalendarView() {
             <div className="h-16 bg-[#1A1A1A]/30 border border-transparent" />
 
             {daysInMonth.map((day) => {
+              const pDay = String(day).padStart(2, "0");
               const countForDay = bookings.filter((b) =>
+                b.date.includes(`${pDay} ${monthShort}`) ||
+                b.date.includes(`${day} ${monthShort}`) ||
                 b.date.includes(`${day} Oct`)
               ).length;
               const isSelected = selectedDay === day;
@@ -115,7 +128,7 @@ export function CalendarView() {
               Agenda For Date
             </span>
             <h3 className="font-serif text-2xl text-[#F0EBE1]">
-              {selectedDay} Oct 2026
+              {selectedDay} {monthShort} {year}
             </h3>
             <span className="text-xs text-[#8A8A7A]">
               {dayBookings.length} Scheduled Appointments

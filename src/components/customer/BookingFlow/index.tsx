@@ -34,12 +34,13 @@ export function BookingFlow({ preselectedService }: BookingFlowProps) {
   const [isOtpVerified, setIsOtpVerified] = useState<boolean>(false);
   const [completedBooking, setCompletedBooking] = useState<Booking | null>(null);
 
-  // Sync preselected service if passed
-  React.useEffect(() => {
+  const [prevPreselected, setPrevPreselected] = useState<MenuItem | null | undefined>(preselectedService);
+  if (preselectedService !== prevPreselected) {
+    setPrevPreselected(preselectedService);
     if (preselectedService) {
       setSelectedService(preselectedService);
     }
-  }, [preselectedService]);
+  }
 
   const canProceed = () => {
     if (step === 1) return !!selectedService;

@@ -12,6 +12,7 @@ import {
   Eye,
   Menu,
   X,
+  RotateCcw,
 } from "lucide-react";
 import { useStore } from "@/store";
 import { useQueue } from "@/hooks/useQueue";
@@ -35,6 +36,7 @@ export function AdminShell() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const adminLogout = useStore((state) => state.adminLogout);
   const setView = useStore((state) => state.setView);
+  const resetDemoData = useStore((state) => state.resetDemoData);
   const { totalWaiting, currentlyServed } = useQueue();
 
   const navItems: { id: AdminTab; label: string; icon: React.ReactNode; badge?: string }[] = [
@@ -150,6 +152,19 @@ export function AdminShell() {
         {/* Sidebar Footer */}
         <div className="pt-6 mt-6 border-t border-[#2F2F2A] space-y-2">
           <button
+            type="button"
+            onClick={() => {
+              if (window.confirm("Reset all queue, bookings, offers & menu data to initial demo state?")) {
+                resetDemoData();
+              }
+            }}
+            className="w-full flex items-center gap-2 px-3.5 py-2 text-xs text-[#8A8A7A] hover:text-[var(--color-gold)] transition-colors cursor-pointer"
+          >
+            <RotateCcw className="w-4 h-4 text-[var(--color-gold)]" />
+            <span>Reset Demo Data</span>
+          </button>
+
+          <button
             onClick={() => setView("customer")}
             className="w-full flex items-center gap-2 px-3.5 py-2 text-xs text-[#8A8A7A] hover:text-[#F0EBE1] transition-colors cursor-pointer"
           >
@@ -190,8 +205,24 @@ export function AdminShell() {
             </span>
           </div>
 
-          <div className="text-[11px] font-mono text-[#8A8A7A]">
-            Cross-Tab Broadcast Active
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] font-mono text-[#8A8A7A] hidden md:inline">
+              Cross-Tab Broadcast Active
+            </span>
+            <button
+              type="button"
+              onClick={() => {
+                if (window.confirm("Reset all queue, bookings, offers & menu data to initial demo state?")) {
+                  resetDemoData();
+                }
+              }}
+              className="flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider bg-[#1E1E1C] border border-[#3F3F3A] text-[#C4C4B5] hover:text-[var(--color-gold)] hover:border-[var(--color-gold)] transition-colors cursor-pointer"
+              title="Re-inject original demo data across all views"
+              style={{ borderRadius: 0 }}
+            >
+              <RotateCcw className="w-3 h-3 text-[var(--color-gold)]" />
+              <span>Reset Data</span>
+            </button>
           </div>
         </div>
 
